@@ -1,0 +1,43 @@
+system:
+  app_name: "AI-Powered Drone Surveillance System"
+  debug: false
+  log_level: "INFO"
+
+device:
+  preferred: "cuda"  # "cuda" or "cpu"
+  fallback_to_cpu: true
+
+model:
+  default_model: "yolov8n.pt"  # Options: yolov8n.pt, yolov8s.pt, yolov8m.pt
+  conf_threshold: 0.45
+  iou_threshold: 0.45
+  img_size: 640
+
+tracking:
+  tracker_type: "bytetrack.yaml"
+  track_high_thresh: 0.5
+  track_low_thresh: 0.1
+  new_track_thresh: 0.6
+  track_buffer: 30
+  match_thresh: 0.8
+
+threat_detection:
+  loitering_time_threshold_seconds: 5.0
+  gathering_count_threshold: 3
+  gathering_distance_pixels: 80
+  fast_movement_threshold_px_per_sec: 150.0
+
+database:
+  path: "data/database/surveillance.db"
+
+storage:
+  screenshots_dir: "data/screenshots"
+  videos_dir: "data/videos"
+
+target_classes:
+  - person
+  - car
+  - motorcycle
+  - bus
+  - truck
+  - bicycle
